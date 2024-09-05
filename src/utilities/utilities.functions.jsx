@@ -24,10 +24,13 @@ export function calculateWinner(squares) {
 
 export function defineWinner(newWinner, oldWinner) {
     if (newWinner.playerX > oldWinner.playerX) {
+        window.localStorage.setItem("lastWinner", "X");
         return "X";
     } else if (newWinner.playerO > oldWinner.playerO) {
+        window.localStorage.setItem("lastWinner", "O");
         return "O";
     } else if (newWinner.draw > oldWinner.draw) {
+        window.localStorage.setItem("lastWinner", "Draw");
         return "Draw";
     }
 }

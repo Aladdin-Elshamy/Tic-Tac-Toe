@@ -20,6 +20,8 @@ export default function Board() {
     const squareElements = Array.from({ length: 9 }, (_, i) => (
         <Square key={i} index={i} />
     ));
+    const lastWinner = realWinner || window.localStorage.getItem("lastWinner");
+    console.log(lastWinner);
     return (
         <div className="container w-[90vw] bg-boardBg md:max-w-xl rounded-3xl p-6 sm:p-16">
             <div className="grid grid-cols-3 gap-4 pb-14">
@@ -41,7 +43,7 @@ export default function Board() {
                     </p>
                 )}
             </div>
-            {realWinner && <WinnerBadge winner={realWinner} />}
+            {lastWinner && isNewGame && <WinnerBadge winner={lastWinner} />}
             <div
                 className={`${
                     isNewGame ? "block" : "hidden"
