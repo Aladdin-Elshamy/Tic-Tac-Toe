@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 export default function WinnerBadge({ winner }) {
     return (
-        <div className="relative w-96 mx-auto sm:w-full z-10 font-inter text-white">
+        <div className="relative w-4/5 mx-auto sm:w-full z-10 font-inter text-white">
             <svg
                 width="69"
                 height="77"
