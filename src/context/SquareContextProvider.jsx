@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { calculateWinner } from "@/utilities/utilities.functions";
 export const SquareContext = createContext();
@@ -9,7 +9,7 @@ export default function SquareContextProvider({ children }) {
         Array(9).fill(null)
     );
     const [xIsNext, setXIsNext] = useLocalStorage("xIsNext", true);
-    const [isNewGame, setIsNewGame] = useState(true);
+    const [isNewGame, setIsNewGame] = useLocalStorage("isNewGame", true);
 
     const [winner, setWinner] = useLocalStorage("winners", {
         playerX: 0,
@@ -22,7 +22,9 @@ export default function SquareContextProvider({ children }) {
     }
     function handleClick(i) {
         const newSquares = squares.slice();
-
+        if (isNewGame) {
+            return;
+        }
         if (calculateWinner(newSquares) || !newSquares.includes(null)) {
             return;
         }
