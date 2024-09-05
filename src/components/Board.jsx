@@ -21,7 +21,6 @@ export default function Board() {
         <Square key={i} index={i} />
     ));
     const lastWinner = realWinner || window.localStorage.getItem("lastWinner");
-    console.log(lastWinner);
     return (
         <div className="container w-[90vw] bg-boardBg md:max-w-xl rounded-3xl p-6 sm:p-16">
             <div className="grid grid-cols-3 gap-4 pb-14">
